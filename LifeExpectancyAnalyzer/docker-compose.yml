@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  lifeexpectancyanalyzer:
+    image: lifeexpectancyanalyzer
+    build:
+      context: ./LifeExpectancyAnalyzer
+      dockerfile: Dockerfile
