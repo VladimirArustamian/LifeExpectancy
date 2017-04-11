@@ -8,7 +8,7 @@ namespace LifeExpectancyAnalyzer.Controllers
     using LifeExpectancyAnalyzer.Database;
 
     [Produces("application/json")]
-    [Route("api/Countries")]
+    [Route("Countries")]
     public class Countries : Controller
     {
         private readonly LifeExpectancyContext _context;

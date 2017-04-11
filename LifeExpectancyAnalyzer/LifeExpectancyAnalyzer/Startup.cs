@@ -29,13 +29,18 @@
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc(options =>
+                {
+                    options.UseCentralRoutePrefix(
+                        new Microsoft.AspNetCore.Mvc.RouteAttribute(RestApiSettings.ApiV0Path));
+                }
+            );
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
+                c.SwaggerDoc("v0", new Swashbuckle.AspNetCore.Swagger.Info
                 {
-                    Title = "Life Expectancy Analyzer API", Version = "v1"
+                    Title = "Life Expectancy Analyzer API", Version = "v0"
                 });
             });
         }
@@ -64,7 +69,7 @@
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Life Expectancy Analyzer API V1");
+                c.SwaggerEndpoint("/swagger/v0/swagger.json", "Life Expectancy Analyzer API V0");
             });
         }
     }
